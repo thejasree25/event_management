@@ -184,23 +184,6 @@ npm run preview
 
 The frontend and backend are maintained in separate repositories so their development and deployment can be managed independently.
 
-## 🎤 Interview Explanation
-
-**Q: Explain your Event Management System frontend project.**
-
-I developed the frontend of an Event Management System using React, JavaScript, Vite, and Tailwind CSS. The frontend provides the user interface for event-related activities and administrative pages. I use reusable React components to organize the interface, React Router for navigation, and Axios to communicate with the Spring Boot backend. The backend processes requests and works with PostgreSQL to store and retrieve data.
-
-**Q: Why did you choose React?**
-
-I chose React because its component-based architecture helps me reuse UI elements, organize code, and update the interface when application data changes.
-
-**Q: How does your frontend communicate with the backend?**
-
-The frontend sends HTTP requests using Axios. The Spring Boot backend processes those requests, interacts with the database when necessary, and returns responses that the frontend displays.
-
-**Q: What is the difference between React and Vite?**
-
-React is the library I use to build the user interface. Vite is the development and build tool I use to run and build the frontend application.
 
 ## 🚀 Future Improvements
 
