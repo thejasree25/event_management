@@ -1,0 +1,648 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@500;600;700;800&display=swap');
+
+/* =========================================================
+   GLOBAL THEME
+========================================================= */
+
+:root {
+  font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  color: #17152b;
+  background: #f5f4fb;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --primary: #6d4aff;
+  --primary-dark: #4f2fd1;
+  --primary-light: #eeeaff;
+  --secondary: #8b5cf6;
+  --accent: #ec4899;
+  --cyan: #06b6d4;
+
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #d97706;
+
+  --ink: #17152b;
+  --muted: #716d83;
+
+  --surface: #ffffff;
+  --surface-soft: #f8f7ff;
+  --page: #f5f4fb;
+  --border: #e9e6f2;
+
+  --shadow: 0 14px 40px rgba(47, 31, 95, 0.09);
+  --shadow-lg: 0 24px 70px rgba(47, 31, 95, 0.15);
+
+  --radius: 18px;
+  --radius-sm: 11px;
+
+  --sans: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  --heading: Manrope, Inter, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+}
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--ink);
+  background:
+    radial-gradient(
+      circle at 10% 0%,
+      rgba(139, 92, 246, 0.08),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 95% 10%,
+      rgba(236, 72, 153, 0.06),
+      transparent 25%
+    ),
+    var(--page);
+  font-family: var(--sans);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  color: var(--ink);
+  font-family: var(--heading);
+  line-height: 1.3;
+}
+
+p {
+  margin-top: 0;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+::selection {
+  color: #fff;
+  background: var(--primary);
+}
+
+#root {
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+:focus-visible {
+  outline: 3px solid rgba(109, 74, 255, 0.45);
+  outline-offset: 3px;
+}
+
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: none;
+}
+
+/* =========================================================
+   GLOBAL ANIMATIONS
+========================================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(109, 74, 255, 0.18);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(109, 74, 255, 0);
+  }
+}
+
+/* =========================================================
+   SHARED FORM CONTROLS
+========================================================= */
+
+input,
+textarea,
+select {
+  max-width: 100%;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9a97ab;
+  opacity: 1;
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  color: #89869a;
+  background-color: #f5f4f9;
+  cursor: not-allowed;
+}
+
+/* =========================================================
+   DEMO CARD CHECKOUT
+========================================================= */
+
+.demo-card-form {
+  margin-top: 25px;
+  padding: 27px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: linear-gradient(145deg, #fff, #fdfcff);
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.5s ease both;
+  transition:
+    border-color var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+.demo-card-form:focus-within {
+  border-color: rgba(109, 74, 255, 0.3);
+  box-shadow: 0 18px 45px rgba(47, 31, 95, 0.11);
+}
+
+/* ---------- Checkout Header ---------- */
+
+.demo-card-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 27px;
+}
+
+.demo-card-logo {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 49px;
+  height: 49px;
+  border: 1px solid #e4dcff;
+  border-radius: 15px;
+  color: var(--primary);
+  background: linear-gradient(145deg, #f4f0ff, #e9e2ff);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.demo-card-heading strong {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.demo-card-heading p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.demo-card-heading .demo-tag {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* ---------- Payment Inputs ---------- */
+
+.payment-input,
+.payment-input-with-icon {
+  width: 100%;
+  min-width: 0;
+  min-height: 49px;
+  padding: 0 14px;
+  border: 1px solid #e4e1ee;
+  border-radius: 12px;
+  outline: none;
+  color: var(--ink);
+  background: #fff;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.payment-input:hover,
+.payment-input-with-icon:hover {
+  border-color: #d2c8f7;
+}
+
+.payment-input:focus,
+.payment-input-with-icon:focus-within {
+  border-color: #a998ff;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(109, 74, 255, 0.09);
+}
+
+.payment-input:invalid:not(:placeholder-shown) {
+  border-color: rgba(220, 38, 38, 0.6);
+}
+
+/* ---------- Input With Icon ---------- */
+
+.payment-input-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  color: #898da1;
+}
+
+.payment-input-with-icon svg {
+  flex-shrink: 0;
+  color: var(--primary);
+}
+
+.payment-input-with-icon input {
+  width: 100%;
+  min-width: 0;
+  min-height: 45px;
+  padding: 0;
+  border: 0;
+  outline: none;
+  color: var(--ink);
+  background: transparent;
+  font-size: 13px;
+}
+
+.payment-input-with-icon input:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ---------- Payment Field Layout ---------- */
+
+.payment-field-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 17px;
+}
+
+.payment-field-row > * {
+  min-width: 0;
+}
+
+/* ---------- Demo Payment Notice ---------- */
+
+.demo-hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  margin: 21px 0;
+  padding: 15px;
+  border: 1px solid #e7dfff;
+  border-radius: 13px;
+  color: #655b87;
+  background: linear-gradient(135deg, #faf8ff, #f3efff);
+  font-size: 11px;
+  line-height: 1.85;
+  overflow-wrap: anywhere;
+}
+
+.demo-hint svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--primary);
+}
+
+/* =========================================================
+   PAYMENT SUCCESS SCREEN
+========================================================= */
+
+.payment-success {
+  width: min(100%, 570px);
+  margin: 0 auto;
+  padding: 42px 38px;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background: linear-gradient(145deg, #fff, #fdfcff);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  animation: fadeUp 0.55s ease both;
+}
+
+/* ---------- Success Icon ---------- */
+
+.success-icon {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto 25px;
+  border: 1px solid #c8f2dd;
+  border-radius: 50%;
+  color: #14966a;
+  background: linear-gradient(145deg, #edfff5, #d9f9e9);
+  box-shadow: 0 8px 25px rgba(20, 150, 106, 0.1);
+  animation: pulseGlow 2.4s infinite;
+}
+
+/* ---------- Success Heading ---------- */
+
+.payment-success h1 {
+  margin: 12px 0 13px;
+  color: var(--ink);
+  font-family: var(--heading);
+  font-size: clamp(29px, 5vw, 38px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -1.5px;
+  overflow-wrap: anywhere;
+}
+
+.payment-success h1 span {
+  color: var(--primary);
+}
+
+.payment-success > p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* ---------- Transaction Details ---------- */
+
+.success-details {
+  margin: 27px 0;
+  padding: 7px 18px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background: #fff;
+  text-align: left;
+}
+
+.success-details > div {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0eff6;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.success-details > div:last-child {
+  border-bottom: 0;
+}
+
+.success-details span {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.success-details strong {
+  color: var(--ink);
+  font-weight: 750;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- Back Link ---------- */
+
+.success-back-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.success-back-link:hover {
+  color: var(--primary-dark);
+  transform: translateX(-3px);
+}
+
+/* =========================================================
+   RESPONSIVE DESIGN
+========================================================= */
+
+@media (min-width: 1440px) {
+  .demo-card-form {
+    padding: 30px;
+  }
+}
+
+@media (max-width: 720px) {
+  :root {
+    font-size: 15px;
+  }
+
+  .demo-card-form {
+    padding: 22px;
+    border-radius: 18px;
+  }
+
+  .payment-success {
+    padding: 32px 24px;
+    border-radius: 22px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demo-card-form {
+    margin-top: 18px;
+    padding: 17px;
+    border-radius: 16px;
+  }
+
+  .demo-card-heading {
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-bottom: 22px;
+  }
+
+  .demo-card-logo {
+    width: 43px;
+    height: 43px;
+  }
+
+  .demo-card-heading .demo-tag {
+    margin-left: auto;
+  }
+
+  .payment-input,
+  .payment-input-with-icon {
+    min-height: 46px;
+    font-size: 12px;
+  }
+
+  .payment-field-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 13px;
+    margin-top: 13px;
+  }
+
+  .demo-hint {
+    gap: 9px;
+    margin: 17px 0;
+    padding: 12px;
+    font-size: 11px;
+  }
+
+  .payment-success {
+    padding: 27px 17px;
+    border-radius: 19px;
+  }
+
+  .success-icon {
+    width: 70px;
+    height: 70px;
+    margin-bottom: 20px;
+  }
+
+  .payment-success h1 {
+    font-size: 30px;
+    letter-spacing: -1px;
+  }
+
+  .success-details {
+    margin: 22px 0;
+    padding: 5px 12px;
+  }
+
+  .success-details > div {
+    gap: 12px;
+    padding: 12px 0;
+    font-size: 11px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,383 @@
+/* ============================================
+   FILE: src/styles/admin-dashboard.css
+   PREMIUM ADMIN DASHBOARD STYLES
+   ============================================ */
+
+/* Main Admin Page */
+
+.admin-page {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  min-height: 570px;
+  margin: 0 auto;
+  padding: 45px 24px 70px;
+  color: var(--ink, #172033);
+  animation: adminFadeUp 0.6s ease both;
+}
+
+/* Admin Hero Banner */
+
+.admin-hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding: 38px 36px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  color: #ffffff;
+  background:
+    radial-gradient(
+      circle at 85% 15%,
+      rgba(255, 255, 255, 0.2),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 10% 100%,
+      rgba(192, 75, 233, 0.38),
+      transparent 35%
+    ),
+    linear-gradient(125deg, #3923b8 0%, #6844e8 52%, #a344d7 100%);
+  box-shadow:
+    0 22px 50px rgba(88, 56, 220, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.admin-hero:hover {
+  box-shadow:
+    0 28px 60px rgba(88, 56, 220, 0.25),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Decorative Circles */
+
+.admin-hero::before {
+  position: absolute;
+  z-index: -1;
+  right: 95px;
+  bottom: -145px;
+  width: 270px;
+  height: 270px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.045);
+  content: "";
+  animation: adminFloat 7s ease-in-out infinite;
+}
+
+.admin-hero::after {
+  position: absolute;
+  z-index: -1;
+  top: -105px;
+  right: -65px;
+  width: 245px;
+  height: 245px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 25px rgba(255, 255, 255, 0.035),
+    0 0 0 50px rgba(255, 255, 255, 0.025);
+  content: "";
+  animation: adminFloat 8s ease-in-out infinite reverse;
+}
+
+/* Hero Text */
+
+.admin-hero p {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: #eee8ff;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 2.5px;
+  line-height: 1.7;
+  text-transform: uppercase;
+}
+
+.admin-hero h1 {
+  position: relative;
+  z-index: 1;
+  max-width: 750px;
+  margin: 14px 0;
+  color: #ffffff;
+  font-family: var(--font-heading, "Inter", "Segoe UI", sans-serif);
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 850;
+  line-height: 1.2;
+  letter-spacing: -1.3px;
+}
+
+.admin-hero span {
+  color: #f0eaff;
+}
+
+.admin-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.admin-hero p:last-child {
+  max-width: 650px;
+  margin-top: 10px;
+  color: rgba(255, 255, 255, 0.83);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.1px;
+  line-height: 1.8;
+  text-transform: none;
+}
+
+/* Dashboard Sections */
+
+.admin-page section {
+  margin-bottom: 26px;
+}
+
+.admin-page h2 {
+  color: var(--ink, #172033);
+  font-family: var(--font-heading, "Inter", "Segoe UI", sans-serif);
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* Dashboard Cards */
+
+.admin-page .dashboard-card,
+.admin-page .admin-stat-card,
+.admin-page .stat-card {
+  position: relative;
+  overflow: hidden;
+  padding: 24px;
+  border: 1px solid #e9e7f3;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #ffffff, #fcfbff);
+  box-shadow: 0 6px 22px rgba(31, 38, 75, 0.045);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.admin-page .dashboard-card:hover,
+.admin-page .admin-stat-card:hover,
+.admin-page .stat-card:hover {
+  transform: translateY(-5px);
+  border-color: #dcd2ff;
+  box-shadow: 0 16px 35px rgba(68, 49, 137, 0.1);
+}
+
+/* Dashboard Links and Buttons */
+
+.admin-page button,
+.admin-page a {
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.admin-page button {
+  cursor: pointer;
+}
+
+.admin-page button:focus-visible,
+.admin-page a:focus-visible {
+  outline: 3px solid rgba(103, 84, 232, 0.3);
+  outline-offset: 3px;
+}
+
+/* Dashboard Tables */
+
+.admin-page table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  border: 1px solid #e9e7f3;
+  border-radius: 15px;
+  background: #ffffff;
+}
+
+.admin-page th {
+  padding: 16px 18px;
+  border-bottom: 1px solid #e9e7f3;
+  background: #f8f6ff;
+  color: #65568f;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.admin-page td {
+  padding: 16px 18px;
+  border-bottom: 1px solid #f0eef7;
+  color: #4c566d;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.admin-page tbody tr {
+  transition: background 0.2s ease;
+}
+
+.admin-page tbody tr:hover {
+  background: #faf8ff;
+}
+
+.admin-page tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Dashboard Form Fields */
+
+.admin-page input,
+.admin-page select,
+.admin-page textarea {
+  max-width: 100%;
+  border: 1px solid #e1e4ee;
+  border-radius: 11px;
+  background: #ffffff;
+  color: #263149;
+  font: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.admin-page input:focus,
+.admin-page select:focus,
+.admin-page textarea:focus {
+  border-color: #8974ef;
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(103, 84, 232, 0.09);
+}
+
+.admin-page input::placeholder,
+.admin-page textarea::placeholder {
+  color: #9ba3b5;
+}
+
+/* Animations */
+
+@keyframes adminFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes adminFloat {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-12px) rotate(5deg);
+  }
+}
+
+/* Tablet */
+
+@media (max-width: 800px) {
+  .admin-page {
+    padding: 30px 16px 55px;
+  }
+
+  .admin-hero {
+    padding: 30px 25px;
+    border-radius: 20px;
+  }
+
+  .admin-hero h1 {
+    font-size: 29px;
+  }
+
+  .admin-hero::before {
+    right: 25px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 480px) {
+  .admin-page {
+    padding: 24px 13px 40px;
+  }
+
+  .admin-hero {
+    padding: 25px 20px;
+    border-radius: 17px;
+  }
+
+  .admin-hero h1 {
+    font-size: 26px;
+    letter-spacing: -0.7px;
+  }
+
+  .admin-hero p {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+  }
+
+  .admin-hero p:last-child {
+    font-size: 13px;
+  }
+
+  .admin-hero::after {
+    top: -130px;
+    right: -130px;
+  }
+
+  .admin-page .dashboard-card,
+  .admin-page .admin-stat-card,
+  .admin-page .stat-card {
+    padding: 18px;
+  }
+
+  .admin-page table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .admin-page th,
+  .admin-page td {
+    padding: 13px 14px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .admin-page {
+    animation: none;
+  }
+
+  .admin-hero::before,
+  .admin-hero::after {
+    animation: none;
+  }
+
+  .admin-hero,
+  .admin-page *,
+  .admin-page *::before,
+  .admin-page *::after {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms !important;
+  }
+}
