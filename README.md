@@ -1,315 +1,219 @@
-# Event Management System — Backend
+# 🎟️ Event Management System — Frontend
 
-A Java Spring Boot backend for the Event Management System. It provides the server-side foundation for processing requests, validating input, interacting with a PostgreSQL database, and applying application security.
+<p align="center">
+  <img src="https://img.shields.io/badge/React-19-61DAFB?logo=react&logoColor=white" alt="React" />
+  <img src="https://img.shields.io/badge/Vite-Frontend%20Tool-646CFF?logo=vite&logoColor=white" alt="Vite" />
+  <img src="https://img.shields.io/badge/JavaScript-ES6%2B-F7DF1E?logo=javascript&logoColor=black" alt="JavaScript" />
+  <img src="https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" />
+  <img src="https://img.shields.io/badge/Axios-API%20Requests-5A29E4?logo=axios&logoColor=white" alt="Axios" />
+</p>
 
-**Repository:** [eventmanagement_backend](https://github.com/thejasree25/eventmanagement_backend)
+## 📌 About the Project
 
-## Table of Contents
+The Event Management System is a web application designed to provide a user-friendly interface for interacting with event-related features.
 
-- [Project Overview](#project-overview)
-- [Technology Stack](#technology-stack)
-- [Backend Workflow](#backend-workflow)
-- [Project Structure](#project-structure)
-- [Prerequisites](#prerequisites)
-- [Installation and Setup](#installation-and-setup)
-- [Database Configuration](#database-configuration)
-- [OAuth Configuration](#oauth-configuration)
-- [Running the Application](#running-the-application)
-- [API Testing](#api-testing)
-- [Troubleshooting](#troubleshooting)
-- [Security Notes](#security-notes)
+The frontend communicates with a separate Spring Boot backend to send requests, retrieve information, and display responses to users.
 
-## Project Overview
+**Frontend repository:** [event_management](https://github.com/thejasree25/event_management)
 
-The backend is responsible for receiving HTTP requests from the frontend, processing business logic, interacting with PostgreSQL, and returning responses.
+## ✨ Key Features
 
-The project uses Spring Boot, Spring Data JPA, Spring Security, request validation, and the PostgreSQL JDBC driver.
+- 🎫 Event browsing and event-related interfaces
+- 🔐 Authentication and registration interfaces
+- 📅 Event registration and booking workflows
+- 👤 User-facing pages
+- 🛠️ Administrative management interfaces
+- 💳 Payment-related interfaces, where supported by the backend
+- 📱 Responsive user interface
+- 🔗 Integration with backend REST APIs
 
-### Main Responsibilities
+*The available features depend on the implementation in the source code and the backend APIs.*
 
-- Process HTTP requests and provide REST API functionality.
-- Validate incoming request data where validation is implemented.
-- Persist and retrieve application data using JPA.
-- Connect to PostgreSQL.
-- Apply authentication and authorization rules configured in Spring Security.
-- Support event-management workflows implemented by the application.
+## 🛠️ Technologies Used and Why
 
-## Technology Stack
-
-| Technology | Purpose |
+| Technology | Why I Used It |
 |---|---|
-| Java 21 | Programming language |
-| Spring Boot 3.5.6 | Application framework |
-| Spring Web | HTTP endpoints and REST APIs |
-| Spring Data JPA | Database access |
-| Hibernate | ORM and entity persistence |
-| Spring Security | Authentication and authorization |
-| Jakarta Bean Validation | Request validation |
-| PostgreSQL | Relational database |
-| Maven | Dependency management and builds |
-| Google API Client | Google API integration dependency |
+| ⚛️ React | To build reusable UI components and manage changing interface data. |
+| ⚡ Vite | To start the development server quickly and build the frontend for production. |
+| 🟨 JavaScript | To implement application logic, event handling, and API interactions. |
+| 🎨 Tailwind CSS | To create responsive layouts and style components efficiently using utility classes. |
+| 🔀 React Router | To navigate between pages without reloading the entire application. |
+| 🌐 Axios | To send HTTP requests to the Spring Boot backend and handle responses and errors. |
+| 🎯 Lucide React | To display consistent icons throughout the interface. |
+| 🔑 Google OAuth library | To integrate Google sign-in into the frontend where configured. |
+| 📦 npm | To install and manage project dependencies. |
+| 🐙 Git and GitHub | To track code changes and host the project repository. |
 
-The configuration file also contains Google and GitHub OAuth registration settings. Verify that the OAuth2 client dependency and corresponding security configuration are present before relying on Spring Security OAuth login.
+### 💡 Why React?
 
-## Backend Workflow
+React allows the application to be divided into reusable components. For example, a navigation bar, event card, button, or form can be maintained independently and reused across multiple pages.
+
+### 💡 Why Axios?
+
+Axios makes it easier to communicate with the backend. The frontend can send requests, receive JSON responses, and display success or error messages based on the result.
+
+### 💡 Why React Router?
+
+React Router allows users to move between pages such as login, registration, event listings, and administration without performing a complete browser reload for every navigation.
+
+## 🔄 Application Workflow
 
 ```text
-React frontend
-      |
-      | HTTP request
-      v
-Spring Boot application
-      |
-      v
-Spring Security
-      |
-      v
-Controller
-      |
-      v
-Service / business logic
-      |
-      v
-Repository
-      |
-      v
-Spring Data JPA / Hibernate
-      |
-      v
-PostgreSQL database
-      |
-      v
-Response returned to frontend
+👤 User
+   |
+   v
+🌐 React Frontend
+   |
+   v
+🧭 React Router
+   |
+   v
+🖱️ User performs an action
+   |
+   v
+📡 Axios sends an HTTP request
+   |
+   v
+☕ Spring Boot Backend
+   |
+   v
+🗄️ PostgreSQL Database
+   |
+   v
+📨 Backend returns a response
+   |
+   v
+🖥️ React displays the updated information
 ```
 
-The exact controller, service, and repository flow depends on how each feature is implemented in the source code.
+### Example: Loading Events
 
-## Project Structure
+1. The user opens the events page.
+2. The React component requests event information from the backend.
+3. Axios sends an HTTP request to the configured API endpoint.
+4. The backend retrieves the required information.
+5. The backend returns a response, generally in JSON format.
+6. React updates the page to display the returned events.
+
+## 🏗️ Project Architecture
 
 ```text
-eventmanagement_backend/
+event_management/
+│
+├── public/               # Static assets
 ├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── ...           # Application packages and Java classes
-│   │   └── resources/
-│   │       └── application.properties
-│   └── test/                 # Automated tests, if present
-├── .mvn/
-│   └── wrapper/
-├── mvnw                      # Maven wrapper for Unix-like systems
-├── mvnw.cmd                  # Maven wrapper for Windows
-├── pom.xml                   # Maven dependencies and build settings
-├── .gitignore
+│   ├── components/       # Reusable UI components
+│   ├── pages/            # Application pages
+│   ├── api/              # API service modules, if present
+│   ├── assets/           # Images and other assets
+│   ├── App.jsx           # Main application component, if present
+│   └── main.jsx          # Application entry point
+│
+├── index.html
+├── package.json
+├── package-lock.json
+├── vite.config.js
 └── README.md
 ```
 
-## Prerequisites
+*Refer to the actual `src` folder for the precise structure of this repository.*
 
-Install the following:
+## ⚙️ Installation and Setup
 
-- JDK 21
-- PostgreSQL
+### Prerequisites
+
+- Node.js
+- npm
 - Git
-- An IDE such as IntelliJ IDEA, Eclipse, or VS Code
-- Postman or another API testing tool
+- Running backend for API-dependent features
 
-## Installation and Setup
-
-### Step 1: Clone the repository
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/thejasree25/eventmanagement_backend.git
-cd eventmanagement_backend
+git clone https://github.com/thejasree25/event_management.git
+cd event_management
 ```
 
-### Step 2: Create the PostgreSQL database
-
-Open PostgreSQL or pgAdmin and execute:
-
-```sql
-CREATE DATABASE event_management;
-```
-
-The database name must match the configured JDBC URL.
-
-### Step 3: Configure application properties
-
-Open:
-
-```text
-src/main/resources/application.properties
-```
-
-The committed configuration uses placeholders for credentials. Replace them locally with valid configuration or use environment-variable placeholders.
-
-For example:
-
-```properties
-spring.application.name=eventmanagement
-server.port=8080
-
-spring.datasource.url=jdbc:postgresql://localhost:5432/event_management
-spring.datasource.username=${DB_USERNAME}
-spring.datasource.password=${DB_PASSWORD}
-spring.datasource.driver-class-name=org.postgresql.Driver
-
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
-spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
-```
-
-Set `DB_USERNAME` and `DB_PASSWORD` in your local environment or IDE run configuration before starting the application.
-
-Keep the other required properties from the existing configuration file, including OAuth settings, if the corresponding features are being used.
-
-### Step 4: Configure OAuth credentials if needed
-
-For Google and GitHub login, obtain the appropriate credentials from the respective developer consoles and configure them locally.
-
-Do not commit actual OAuth client secrets. Use environment variables, for example:
-
-```properties
-spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
-spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
-
-spring.security.oauth2.client.registration.github.client-id=${GITHUB_CLIENT_ID}
-spring.security.oauth2.client.registration.github.client-secret=${GITHUB_CLIENT_SECRET}
-```
-
-The required redirect URLs and provider settings must match the application's Spring Security configuration.
-
-### Step 5: Build the application
-
-On Windows:
-
-```cmd
-mvnw.cmd clean install
-```
-
-On macOS or Linux:
+### 2. Install dependencies
 
 ```bash
-./mvnw clean install
+npm install
 ```
 
-If the Maven wrapper cannot run, install Maven and use:
+### 3. Configure the backend API URL
 
-```bash
-mvn clean install
-```
+Configure the API base URL in the existing API service or environment configuration.
 
-### Step 6: Start the backend
-
-On Windows:
-
-```cmd
-mvnw.cmd spring-boot:run
-```
-
-On macOS or Linux:
-
-```bash
-./mvnw spring-boot:run
-```
-
-The configured application port is:
+For local development, the backend address is typically:
 
 ```text
 http://localhost:8080
 ```
 
-This is the server address, not necessarily a browser page. Use the actual API endpoints declared in the controllers.
+Use the API paths actually defined by the backend.
 
-## Database Configuration
+### 4. Start the frontend
 
-The application is configured for PostgreSQL with:
-
-```text
-Database: event_management
-Host: localhost
-Port: 5432
+```bash
+npm run dev
 ```
 
-JPA uses Hibernate to map Java entities to database tables. The configured `spring.jpa.hibernate.ddl-auto=update` setting allows Hibernate to update the schema based on entity changes.
+Open the URL displayed in the terminal, usually `http://localhost:5173`.
 
-For production, use a controlled database migration process and review schema changes before deployment.
+### 5. Build for production
 
-## OAuth Configuration
+```bash
+npm run build
+```
 
-The configuration contains Google and GitHub OAuth registration properties.
+To preview the production build locally:
 
-Before enabling these providers:
+```bash
+npm run preview
+```
 
-1. Configure valid client IDs and client secrets.
-2. Verify the OAuth2 client dependency is present in `pom.xml`.
-3. Verify the Spring Security login configuration.
-4. Register the required redirect URLs with each provider.
-5. Test successful login, login failure, and logout behavior.
+## 🔗 Frontend and Backend Communication
 
-A property entry alone does not implement an OAuth login flow; the required dependencies and security configuration must also be present.
+| Component | Responsibility |
+|---|---|
+| Frontend | Displays pages and collects user input. |
+| Axios | Sends HTTP requests and receives responses. |
+| Spring Boot | Processes requests and implements server-side logic. |
+| Spring Data JPA | Handles database operations through repositories. |
+| PostgreSQL | Stores application data. |
 
-## API Testing
+The frontend and backend are maintained in separate repositories so their development and deployment can be managed independently.
 
-Use Postman or another HTTP client to test endpoints defined by the backend.
+## 🎤 Interview Explanation
 
-For each endpoint, document:
+**Q: Explain your Event Management System frontend project.**
 
-- HTTP method and URL
-- Required headers
-- Request body
-- Authentication requirements
-- Expected response and status code
+I developed the frontend of an Event Management System using React, JavaScript, Vite, and Tailwind CSS. The frontend provides the user interface for event-related activities and administrative pages. I use reusable React components to organize the interface, React Router for navigation, and Axios to communicate with the Spring Boot backend. The backend processes requests and works with PostgreSQL to store and retrieve data.
 
-Refer to the controller classes in `src/main/java` for the authoritative list of available endpoints.
+**Q: Why did you choose React?**
 
-The backend is intended to be consumed by the separate React frontend repository.
+I chose React because its component-based architecture helps me reuse UI elements, organize code, and update the interface when application data changes.
 
-## Troubleshooting
+**Q: How does your frontend communicate with the backend?**
 
-**Database connection failed**
+The frontend sends HTTP requests using Axios. The Spring Boot backend processes those requests, interacts with the database when necessary, and returns responses that the frontend displays.
 
-- Confirm PostgreSQL is running.
-- Check the database name, username, password, host, and port.
-- Verify that the PostgreSQL driver is available.
+**Q: What is the difference between React and Vite?**
 
-**Application does not start**
+React is the library I use to build the user interface. Vite is the development and build tool I use to run and build the frontend application.
 
-- Confirm JDK 21 is installed.
-- Check the terminal output for dependency or configuration errors.
-- Run `mvnw.cmd clean install` on Windows.
+## 🚀 Future Improvements
 
-**401 Unauthorized or 403 Forbidden**
+- Add automated component and integration tests.
+- Improve accessibility and loading states.
+- Document API endpoints and response formats.
+- Add screenshots and a live demo link.
+- Improve production error handling.
 
-- Check the endpoint's security rules.
-- Verify the authentication method and credentials.
-- Check required roles and authorities.
-
-**OAuth login fails**
-
-- Confirm the OAuth2 client dependency and security configuration.
-- Verify provider credentials and redirect URLs.
-- Check the backend logs for authentication errors.
-
-**Frontend cannot access the backend**
-
-- Confirm the backend is running on port 8080.
-- Verify the frontend API base URL.
-- Check CORS configuration and endpoint paths.
-
-## Security Notes
-
-- Never commit real OAuth client secrets, database passwords, API keys, or JWT signing secrets.
-- Use environment variables or a secret manager for credentials.
-- Rotate credentials that have been exposed.
-- Avoid exposing stack traces and sensitive error details in production.
-- Configure appropriate authentication, authorization, and CORS policies before deployment.
-- Use HTTPS for production deployments.
-
-## Author
+## 👩‍💻 Author
 
 **Thejasree Ganginepalli**
 
 - GitHub: [thejasree25](https://github.com/thejasree25)
+- Frontend repository: [event_management](https://github.com/thejasree25/event_management)
 
